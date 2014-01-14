@@ -15,12 +15,14 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Medium" size:28.0f];
+        self.titleLabel.font = [UIFont fontWithName:@"AppleSDGothicNeo-Medium" size:(self.frame.size.width) / 2.571428571];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [self setTitleColor:[UIColor colorWithHue:.555555556 saturation:0.75 brightness:0.4 alpha:1.0] forState:UIControlStateNormal];
+        UIColor *borderColor = buttonBorder;
+        UIColor *textColor = buttonTextColor;
+        [self setTitleColor:textColor forState:UIControlStateNormal];
         [[self layer] setBorderWidth:2.0f];
-        [[self layer] setBorderColor:[UIColor colorWithHue:.555555556 saturation:0.75 brightness:0.6 alpha:1.0].CGColor];
-        [[self layer] setCornerRadius:36.0f];
+        [[self layer] setBorderColor:borderColor.CGColor];
+        [[self layer] setCornerRadius:(self.frame.size.width) / 2];
     }
     return self;
 }

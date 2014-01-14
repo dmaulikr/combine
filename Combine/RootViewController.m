@@ -23,7 +23,10 @@ typedef NS_ENUM(NSUInteger, buttons) {
     ButtonSix = 6,
     ButtonSeven = 7,
     ButtonEight = 8,
-    ButtonNine = 9
+    ButtonNine = 9,
+    ButtonClear = 10,
+    ButtonAdd = 11,
+    ButtonEquals = 12
 };
 
 @end
@@ -34,7 +37,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = backgroundBlue;
     
     [self buildResultWindow];
     [self stormOfButtons];
@@ -52,107 +55,164 @@ typedef NS_ENUM(NSUInteger, buttons) {
 
 - (void)stormOfButtons {
     
+    CGFloat buttonMargin = 78;
+    
+    CircularButton *clear = [[CircularButton alloc] initWithFrame:CGRectMake(215, 150, 50, 50)];
+    clear.tag = ButtonClear;
+    [clear setTitle:@"C" forState:UIControlStateNormal];
+    [clear addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:clear];
+    
     UIView *numberPad = [[UIView alloc] initWithFrame:CGRectMake(20, 160, 300, 500)];
     numberPad.center = self.view.center;
-    [numberPad setFrame:CGRectOffset(numberPad.frame, 0, 140)];
+    [numberPad setFrame:CGRectOffset(numberPad.frame, 0, 185)];
     [self.view addSubview:numberPad];
     
-    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(24, 0, 72, 72)];
+    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(40, 0, 64, 64)];
     nine.tag = ButtonNine;
     [nine setTitle:@"9" forState:UIControlStateNormal];
     [nine addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:nine];
     
-    CircularButton *eight = [[CircularButton alloc] initWithFrame:CGRectOffset(nine.frame, 90, 0)];
+    CircularButton *eight = [[CircularButton alloc] initWithFrame:CGRectOffset(nine.frame, buttonMargin, 0)];
     eight.tag = ButtonEight;
     [eight setTitle:@"8" forState:UIControlStateNormal];
     [eight addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:eight];
     
-    CircularButton *seven = [[CircularButton alloc] initWithFrame:CGRectOffset(eight.frame, 90, 0)];
+    CircularButton *seven = [[CircularButton alloc] initWithFrame:CGRectOffset(eight.frame, buttonMargin, 0)];
     seven.tag = ButtonSeven;
     [seven setTitle:@"7" forState:UIControlStateNormal];
     [seven addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:seven];
     
-    CircularButton *six = [[CircularButton alloc] initWithFrame:CGRectOffset(nine.frame, 0, 90)];
+    CircularButton *six = [[CircularButton alloc] initWithFrame:CGRectOffset(nine.frame, 0, buttonMargin)];
     six.tag = ButtonSix;
     [six setTitle:@"6" forState:UIControlStateNormal];
     [six addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:six];
     
-    CircularButton *five = [[CircularButton alloc] initWithFrame:CGRectOffset(six.frame, 90, 0)];
+    CircularButton *five = [[CircularButton alloc] initWithFrame:CGRectOffset(six.frame, buttonMargin, 0)];
     five.tag = ButtonFive;
     [five setTitle:@"5" forState:UIControlStateNormal];
     [five addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:five];
     
-    CircularButton *four = [[CircularButton alloc] initWithFrame:CGRectOffset(five.frame, 90, 0)];
+    CircularButton *four = [[CircularButton alloc] initWithFrame:CGRectOffset(five.frame, buttonMargin, 0)];
     four.tag = ButtonFour;
     [four setTitle:@"4" forState:UIControlStateNormal];
     [four addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:four];
     
-    CircularButton *three = [[CircularButton alloc] initWithFrame:CGRectOffset(six.frame, 0, 90)];
+    CircularButton *three = [[CircularButton alloc] initWithFrame:CGRectOffset(six.frame, 0, buttonMargin)];
     three.tag = ButtonThree;
     [three setTitle:@"3" forState:UIControlStateNormal];
     [three addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:three];
     
-    CircularButton *two = [[CircularButton alloc] initWithFrame:CGRectOffset(three.frame, 90, 0)];
+    CircularButton *two = [[CircularButton alloc] initWithFrame:CGRectOffset(three.frame, buttonMargin, 0)];
     two.tag = ButtonTwo;
     [two setTitle:@"2" forState:UIControlStateNormal];
     [two addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:two];
     
-    CircularButton *one = [[CircularButton alloc] initWithFrame:CGRectOffset(two.frame, 90, 0)];
+    CircularButton *one = [[CircularButton alloc] initWithFrame:CGRectOffset(two.frame, buttonMargin, 0)];
     one.tag = ButtonOne;
     [one setTitle:@"1" forState:UIControlStateNormal];
     [one addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:one];
+    
+    CircularButton *zero = [[CircularButton alloc] initWithFrame:CGRectOffset(three.frame, 0, buttonMargin)];
+    zero.tag = ButtonZero;
+    [zero setTitle:@"0" forState:UIControlStateNormal];
+    [zero addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [numberPad addSubview:zero];
+    
+    CircularButton *plus = [[CircularButton alloc] initWithFrame:CGRectOffset(zero.frame, buttonMargin, 0)];
+    plus.tag = ButtonAdd;
+    [plus setTitle:@"+" forState:UIControlStateNormal];
+    [plus addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [numberPad addSubview:plus];
+    
+    CircularButton *equals = [[CircularButton alloc] initWithFrame:CGRectOffset(plus.frame, buttonMargin, 0)];
+    equals.tag = ButtonEquals;
+    [equals setTitle:@"=" forState:UIControlStateNormal];
+    [equals addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [numberPad addSubview:equals];
+    
 }
 
 - (void)calcButtonPressed:(id)sender {
+    
+    if ([self.result.text isEqualToString:@"0"]) {
+        self.result.text = @"";
+    }
+    
     switch ([sender tag]) {
         case ButtonNine:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:9];
             break;
             
         case ButtonEight:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:8];
             break;
             
         case ButtonSeven:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:7];
             break;
             
         case ButtonSix:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:6];
             break;
             
         case ButtonFive:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:5];
             break;
             
         case ButtonFour:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:4];
             break;
             
         case ButtonThree:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:3];
             break;
             
         case ButtonTwo:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:2];
             break;
             
         case ButtonOne:
-            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
+            [self appendNumber:1];
+            break;
+            
+        case ButtonClear:
+            self.result.text = @"0";
+            break;
+            
+        case ButtonAdd:
+            [self addNumber];
+            break;
+            
+        case ButtonEquals:
+            self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
             break;
             
         default:
             break;
     }
+}
+
+- (void)appendNumber:(int)number {
+    NSString *result = self.result.text;
+    NSNumber *n = [NSNumber numberWithInt:number];
+    NSString *stringVal = [n stringValue];
+    NSString *appended = [result stringByAppendingString:stringVal];
+    self.result.text = appended;
+}
+
+- (void)addNumber {
+    NSInteger n = [self.result.text integerValue];
+    self.scratchpad = self.scratchpad + n;
 }
 
 @end

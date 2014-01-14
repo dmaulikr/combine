@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8FEC660F-6415-4EDA-A6F5-298DB18648AC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Combine</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C1A34563-45C4-4531-9238-33CBF55ECAC8</key>
+		<string>https://github.com/matthewmascioni/combine.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Combine.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C1A34563-45C4-4531-9238-33CBF55ECAC8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/matthewmascioni/combine.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C1A34563-45C4-4531-9238-33CBF55ECAC8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C1A34563-45C4-4531-9238-33CBF55ECAC8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Combine</string>
+		</dict>
+	</array>
+</dict>
+</plist>

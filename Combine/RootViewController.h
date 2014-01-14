@@ -14,5 +14,6 @@
 @interface RootViewController : UIViewController
 
 @property (strong, nonatomic) ResultLabel *result;
+@property (nonatomic) int scratchpad;
 
 @end
