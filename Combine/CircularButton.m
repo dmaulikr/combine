@@ -20,7 +20,7 @@
         [self setTitleColor:[UIColor colorWithHue:.555555556 saturation:0.75 brightness:0.4 alpha:1.0] forState:UIControlStateNormal];
         [[self layer] setBorderWidth:2.0f];
         [[self layer] setBorderColor:[UIColor colorWithHue:.555555556 saturation:0.75 brightness:0.6 alpha:1.0].CGColor];
-        [[self layer] setCornerRadius:32.0f];
+        [[self layer] setCornerRadius:36.0f];
     }
     return self;
 }
