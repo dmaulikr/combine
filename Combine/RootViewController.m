@@ -57,7 +57,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
     [numberPad setFrame:CGRectOffset(numberPad.frame, 0, 140)];
     [self.view addSubview:numberPad];
     
-    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(25, 0, 64, 64)];
+    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(28, 0, 64, 64)];
     nine.tag = ButtonNine;
     [nine setTitle:@"9" forState:UIControlStateNormal];
     [nine addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
