@@ -106,7 +106,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
     [numberPad addSubview:two];
     
     CircularButton *one = [[CircularButton alloc] initWithFrame:CGRectOffset(two.frame, 90, 0)];
-    one.tag = ButtonTwo;
+    one.tag = ButtonOne;
     [one setTitle:@"1" forState:UIControlStateNormal];
     [one addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [numberPad addSubview:one];
@@ -115,39 +115,39 @@ typedef NS_ENUM(NSUInteger, buttons) {
 - (void)calcButtonPressed:(id)sender {
     switch ([sender tag]) {
         case ButtonNine:
-            NSLog(@"9");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonEight:
-            NSLog(@"8");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonSeven:
-            NSLog(@"7");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonSix:
-            NSLog(@"6");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonFive:
-            NSLog(@"5");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonFour:
-            NSLog(@"4");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonThree:
-            NSLog(@"3");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonTwo:
-            NSLog(@"2");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         case ButtonOne:
-            NSLog(@"1");
+            self.result.text = [NSString stringWithFormat:@"%i", [sender tag]];
             break;
             
         default:
