@@ -22,6 +22,7 @@
 		8D813C021884C3780043484A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D813C011884C3780043484A /* RootViewController.m */; };
 		8D813C061884C3A60043484A /* CircularButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D813C051884C3A60043484A /* CircularButton.m */; };
 		8D813C0A1884C76E0043484A /* ResultLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D813C091884C76E0043484A /* ResultLabel.m */; };
+		8D813C0D1884DAF80043484A /* UIImage+MMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D813C0C1884DAF80043484A /* UIImage+MMImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		8D813C071884C54D0043484A /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		8D813C081884C76E0043484A /* ResultLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLabel.h; sourceTree = "<group>"; };
 		8D813C091884C76E0043484A /* ResultLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLabel.m; sourceTree = "<group>"; };
+		8D813C0B1884DAF80043484A /* UIImage+MMImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MMImage.h"; sourceTree = "<group>"; };
+		8D813C0C1884DAF80043484A /* UIImage+MMImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MMImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +167,8 @@
 				8D813C051884C3A60043484A /* CircularButton.m */,
 				8D813C081884C76E0043484A /* ResultLabel.h */,
 				8D813C091884C76E0043484A /* ResultLabel.m */,
+				8D813C0B1884DAF80043484A /* UIImage+MMImage.h */,
+				8D813C0C1884DAF80043484A /* UIImage+MMImage.m */,
 				8D813C071884C54D0043484A /* Constants.h */,
 			);
 			name = Views;
@@ -265,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D813C0A1884C76E0043484A /* ResultLabel.m in Sources */,
+				8D813C0D1884DAF80043484A /* UIImage+MMImage.m in Sources */,
 				8D813C061884C3A60043484A /* CircularButton.m in Sources */,
 				8D813BE21884C24D0043484A /* AppDelegate.m in Sources */,
 				8D813BDE1884C24D0043484A /* main.m in Sources */,
