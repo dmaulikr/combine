@@ -188,57 +188,31 @@ typedef NS_ENUM(NSUInteger, buttons) {
 - (void)appendNumber:(int)number {
     if (self.shouldReset) {
         self.result.text = @"";
-        NSString *result = self.result.text;
-        NSNumber *n = [NSNumber numberWithInt:number];
-        NSString *stringVal = [n stringValue];
-        NSString *appended = [result stringByAppendingString:stringVal];
-        self.result.text = appended;
         self.shouldReset = NO;
-    } else {
-        NSString *result = self.result.text;
-        NSNumber *n = [NSNumber numberWithInt:number];
-        NSString *stringVal = [n stringValue];
-        NSString *appended = [result stringByAppendingString:stringVal];
-        self.result.text = appended;
     }
+    NSString *result = self.result.text;
+    NSNumber *n = [NSNumber numberWithInt:number];
+    NSString *stringVal = [n stringValue];
+    NSString *appended = [result stringByAppendingString:stringVal];
+    self.result.text = appended;
 }
 
 - (void)addNumber {
-    if ([self.result.text intValue] != self.scratchpad) {
-        NSInteger n = [self.result.text integerValue];
-        self.scratchpad += n;
-        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
-    } else if ([self.result.text intValue] == self.scratchpad) {
-        NSInteger n = [self.result.text integerValue];
-        self.scratchpad += n;
-        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
-    }
-    NSLog(@"%i", self.scratchpad);
+    NSInteger n = [self.result.text integerValue];
+    self.scratchpad += n;
+    self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
 }
 
 - (void)timeToCombine {
-    NSLog(@"Displayed %@", self.result.text);
-    NSLog(@"Scratchpad: %i", self.scratchpad);
     CGRect initial = self.result.frame;
-    if (self.scratchpad == [self.result.text intValue]) {
-        int i = self.scratchpad * 2;
-        [UIView animateWithDuration:0.25 animations:^{
-            self.result.alpha = 0;
-            self.result.frame = CGRectOffset(self.result.frame, 100, 0);
-            self.result.text = [NSString stringWithFormat:@"%i", i];
-            self.result.frame = initial;
-            self.result.alpha = 1;
-        }];
-    } else {
-        self.scratchpad += [self.result.text intValue];
-        [UIView animateWithDuration:0.25 animations:^{
-            self.result.alpha = 0;
-            self.result.frame = CGRectOffset(self.result.frame, 100, 0);
-            self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
-            self.result.frame = initial;
-            self.result.alpha = 1;
-        }];
-    }
+    self.scratchpad += [self.result.text intValue];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.result.alpha = 0;
+        self.result.frame = CGRectOffset(self.result.frame, 100, 0);
+        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+        self.result.frame = initial;
+        self.result.alpha = 1;
+    }];
 }
 
 #pragma mark - Into Darkness or to Light
