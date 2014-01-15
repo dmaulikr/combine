@@ -185,16 +185,22 @@ typedef NS_ENUM(NSUInteger, buttons) {
             [self appendNumber:1];
             break;
             
+        case ButtonZero:
+            [self appendNumber:0];
+            break;
+            
         case ButtonClear:
+            self.scratchpad = 0;
             self.result.text = @"0";
             break;
             
         case ButtonAdd:
+            self.shouldReset = YES;
             [self addNumber];
             break;
             
         case ButtonEquals:
-            self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+            [self timeToCombine];
             break;
             
         default:
@@ -203,16 +209,40 @@ typedef NS_ENUM(NSUInteger, buttons) {
 }
 
 - (void)appendNumber:(int)number {
-    NSString *result = self.result.text;
-    NSNumber *n = [NSNumber numberWithInt:number];
-    NSString *stringVal = [n stringValue];
-    NSString *appended = [result stringByAppendingString:stringVal];
-    self.result.text = appended;
+    if (self.shouldReset) {
+        self.result.text = @"";
+        NSString *result = self.result.text;
+        NSNumber *n = [NSNumber numberWithInt:number];
+        NSString *stringVal = [n stringValue];
+        NSString *appended = [result stringByAppendingString:stringVal];
+        self.result.text = appended;
+        self.shouldReset = NO;
+    } else {
+        NSString *result = self.result.text;
+        NSNumber *n = [NSNumber numberWithInt:number];
+        NSString *stringVal = [n stringValue];
+        NSString *appended = [result stringByAppendingString:stringVal];
+        self.result.text = appended;
+    }
 }
 
 - (void)addNumber {
-    NSInteger n = [self.result.text integerValue];
-    self.scratchpad = self.scratchpad + n;
+    if (self.scratchpad != [self.result.text intValue]) {
+        NSInteger n = [self.result.text integerValue];
+        self.scratchpad = self.scratchpad + n;
+        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+    }
+    NSLog(@"%i", self.scratchpad);
+}
+
+- (void)timeToCombine {
+    if (self.scratchpad == [self.result.text intValue]) {
+        int i = self.scratchpad * 2;
+        self.result.text = [NSString stringWithFormat:@"%i", i];
+    } else {
+        self.scratchpad += [self.result.text intValue];
+        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+    }
 }
 
 @end
