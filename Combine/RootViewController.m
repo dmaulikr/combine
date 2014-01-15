@@ -198,9 +198,14 @@ typedef NS_ENUM(NSUInteger, buttons) {
 }
 
 - (void)addNumber {
-    NSInteger n = [self.result.text integerValue];
-    self.scratchpad += n;
-    self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+    if (!self.shouldNotDouble) {
+        NSInteger n = [self.result.text integerValue];
+        self.scratchpad += n;
+        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+    } else {
+        self.shouldNotDouble = NO;
+    }
+    NSLog(@"Scratchpad after add: %i", self.scratchpad);
 }
 
 - (void)timeToCombine {
@@ -213,14 +218,16 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.result.frame = initial;
         self.result.alpha = 1;
     }];
+    NSLog(@"Scratchpad after equal: %i", self.scratchpad);
+    self.shouldNotDouble = YES;
 }
 
 #pragma mark - Into Darkness or to Light
 
 - (void)swipedDown:(id)sender {
     [UIView animateWithDuration:0.2 animations:^{
-            self.view.backgroundColor = backgroundDark;
-            self.window.backgroundColor = calculatorWindowDark;
+        self.view.backgroundColor = backgroundDark;
+        self.window.backgroundColor = calculatorWindowDark;
     }];
     
 }

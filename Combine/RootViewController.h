@@ -17,5 +17,6 @@
 @property (strong, nonatomic) ResultLabel *result;
 @property (nonatomic) int scratchpad;
 @property (nonatomic) BOOL shouldReset;
+@property (nonatomic) BOOL shouldNotDouble;
 
 @end
