@@ -19,7 +19,6 @@
         UIColor *borderColor = buttonBorder;
         UIColor *textColor = buttonTextColor;
         [self setTitle:title forState:UIControlStateNormal];
-        [self setTag:tag];
         [self setTitleColor:textColor forState:UIControlStateNormal];
         [[self layer] setBorderWidth:2.0f];
         [[self layer] setBorderColor:borderColor.CGColor];

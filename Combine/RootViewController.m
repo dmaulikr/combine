@@ -203,6 +203,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.scratchpad += n;
         self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
     } else {
+        // Naturally, we want to unlock the doubling feature after our normal add is done.
         self.shouldNotDouble = NO;
     }
     NSLog(@"Scratchpad after add: %i", self.scratchpad);
@@ -219,6 +220,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.result.alpha = 1;
     }];
     NSLog(@"Scratchpad after equal: %i", self.scratchpad);
+    // Let's make sure that we can perform further calculations on this result.
     self.shouldNotDouble = YES;
 }
 
