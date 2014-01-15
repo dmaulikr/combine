@@ -13,6 +13,7 @@
 
 @interface RootViewController : UIViewController
 
+@property (strong, nonatomic) UIView *window;
 @property (strong, nonatomic) ResultLabel *result;
 @property (nonatomic) int scratchpad;
 @property (nonatomic) BOOL shouldReset;

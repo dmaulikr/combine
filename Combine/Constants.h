@@ -14,4 +14,9 @@
 #define buttonBorder [UIColor colorWithHue:.555555556 saturation:0.4 brightness:1 alpha:1.0];
 #define buttonTextColor [UIColor colorWithHue:.555555556 saturation:0.19 brightness:1 alpha:1.0];
 
+// Dark Theme
+
+#define backgroundDark [UIColor colorWithHue:0 saturation:0 brightness:0.2 alpha:1.0];
+#define calculatorWindowDark [UIColor colorWithHue:0 saturation:0 brightness:0.4 alpha:1.0];
+
 #endif

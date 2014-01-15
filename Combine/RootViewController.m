@@ -39,18 +39,30 @@ typedef NS_ENUM(NSUInteger, buttons) {
     
     self.view.backgroundColor = backgroundBlue;
     
+    UISwipeGestureRecognizer *downRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedDown:)];
+    [downRecognizer setDirection:UISwipeGestureRecognizerDirectionDown];
+    [downRecognizer setNumberOfTouchesRequired:2];
+    downRecognizer.delaysTouchesBegan = YES;
+    [[self view] addGestureRecognizer:downRecognizer];
+    
+    UISwipeGestureRecognizer *upRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedUp:)];
+    [upRecognizer setDirection:UISwipeGestureRecognizerDirectionUp];
+    [upRecognizer setNumberOfTouchesRequired:2];
+    upRecognizer.delaysTouchesBegan = YES;
+    [[self view] addGestureRecognizer:upRecognizer];
+    
     [self buildResultWindow];
     [self stormOfButtons];
 }
 
 - (void)buildResultWindow {
-    UIView *window = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 140)];
-    window.backgroundColor = calculatorWindowBlue;
-    [self.view addSubview:window];
+    self.window = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 140)];
+    self.window.backgroundColor = calculatorWindowBlue;
+    [self.view addSubview:self.window];
     
     self.result = [[ResultLabel alloc] initWithFrame:CGRectMake(20, 25, 290, 100)];
     self.result.text = @"0";
-    [window addSubview:self.result];
+    [self.window addSubview:self.result];
 }
 
 - (void)stormOfButtons {
@@ -257,5 +269,24 @@ typedef NS_ENUM(NSUInteger, buttons) {
         }];
     }
 }
+
+#pragma mark - Into Darkness
+
+- (void)swipedDown:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+            self.view.backgroundColor = backgroundDark;
+            self.window.backgroundColor = calculatorWindowDark;
+    }];
+    
+}
+
+- (void)swipedUp:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.backgroundColor = backgroundBlue;
+        self.window.backgroundColor = calculatorWindowBlue;
+    }];
+}
+
+
 
 @end
