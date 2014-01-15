@@ -11,4 +11,6 @@
 
 @interface CircularButton : UIButton
 
+- (id)initWithFrame:(CGRect)frame andTitle:(NSString *)title andTag:(NSInteger)tag onTouch:(SEL)selector;
+
 @end
