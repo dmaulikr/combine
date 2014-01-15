@@ -18,6 +18,7 @@
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         UIColor *borderColor = buttonBorder;
         UIColor *textColor = buttonTextColor;
+        [self setTag:tag];
         [self setTitle:title forState:UIControlStateNormal];
         [self setTitleColor:textColor forState:UIControlStateNormal];
         [[self layer] setBorderWidth:2.0f];

@@ -117,7 +117,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
 
 #pragma mark - Switchboard
 
-- (void)calcButtonPressed:(CircularButton *)sender {
+- (void)calcButtonPressed:(id)sender {
     
     if ([self.result.text isEqualToString:@"0"]) {
         self.result.text = @"";
@@ -170,6 +170,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
             break;
             
         case ButtonAdd:
+            // We need to instruct the result label to reset it's text once more numbers are ready to be appended.
             self.shouldReset = YES;
             [self addNumber];
             break;
@@ -203,7 +204,6 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.scratchpad += n;
         self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
     } else {
-        // Naturally, we want to unlock the doubling feature after our normal add is done.
         self.shouldNotDouble = NO;
     }
     NSLog(@"Scratchpad after add: %i", self.scratchpad);
@@ -220,7 +220,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.result.alpha = 1;
     }];
     NSLog(@"Scratchpad after equal: %i", self.scratchpad);
-    // Let's make sure that we can perform further calculations on this result.
+    // Let's let the user add further to the result.
     self.shouldNotDouble = YES;
 }
 
