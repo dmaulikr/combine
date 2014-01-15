@@ -27,4 +27,17 @@
     return self;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self sendActionsForControlEvents:UIControlEventTouchUpInside];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.backgroundColor = [UIColor whiteColor];
+    }];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.backgroundColor = [UIColor clearColor];
+    }];
+}
+
 @end

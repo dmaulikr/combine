@@ -55,9 +55,9 @@ typedef NS_ENUM(NSUInteger, buttons) {
 
 - (void)stormOfButtons {
     
-    CGFloat buttonMargin = 78;
+    CGFloat buttonMargin = 82;
     
-    CircularButton *clear = [[CircularButton alloc] initWithFrame:CGRectMake(215, 150, 50, 50)];
+    CircularButton *clear = [[CircularButton alloc] initWithFrame:CGRectMake(216, 150, 50, 50)];
     clear.tag = ButtonClear;
     [clear setTitle:@"C" forState:UIControlStateNormal];
     [clear addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
     [numberPad setFrame:CGRectOffset(numberPad.frame, 0, 185)];
     [self.view addSubview:numberPad];
     
-    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(40, 0, 64, 64)];
+    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(32, 0, 70, 70)];
     nine.tag = ButtonNine;
     [nine setTitle:@"9" forState:UIControlStateNormal];
     [nine addTarget:self action:@selector(calcButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -236,12 +236,25 @@ typedef NS_ENUM(NSUInteger, buttons) {
 }
 
 - (void)timeToCombine {
+    CGRect initial = self.result.frame;
     if (self.scratchpad == [self.result.text intValue]) {
         int i = self.scratchpad * 2;
-        self.result.text = [NSString stringWithFormat:@"%i", i];
+        [UIView animateWithDuration:0.25 animations:^{
+            self.result.alpha = 0;
+            self.result.frame = CGRectOffset(self.result.frame, 100, 0);
+            self.result.text = [NSString stringWithFormat:@"%i", i];
+            self.result.frame = initial;
+            self.result.alpha = 1;
+        }];
     } else {
         self.scratchpad += [self.result.text intValue];
-        self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+        [UIView animateWithDuration:0.25 animations:^{
+            self.result.alpha = 0;
+            self.result.frame = CGRectOffset(self.result.frame, 100, 0);
+            self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
+            self.result.frame = initial;
+            self.result.alpha = 1;
+        }];
     }
 }
 
