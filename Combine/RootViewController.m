@@ -183,8 +183,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
             break;
             
         case ButtonClear:
-            self.scratchpad = 0;
-            self.result.text = @"0";
+            [self clearCalculator];
             break;
             
         case ButtonAdd:
@@ -223,6 +222,8 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.result.text = [NSString stringWithFormat:@"%i", self.scratchpad];
     } else {
         self.shouldNotDouble = NO;
+        NSInteger n = [self.result.text integerValue];
+        self.scratchpad += n;
     }
     NSLog(@"Scratchpad after add: %i", self.scratchpad);
 }
@@ -240,6 +241,12 @@ typedef NS_ENUM(NSUInteger, buttons) {
     NSLog(@"Scratchpad after equal: %i", self.scratchpad);
     // Let's let the user add further to the result.
     self.shouldNotDouble = YES;
+}
+
+- (void)clearCalculator {
+    self.shouldNotDouble = YES;
+    self.scratchpad = 0;
+    self.result.text = @"0";
 }
 
 #pragma mark - Into Darkness or to Light
