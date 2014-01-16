@@ -67,17 +67,35 @@ typedef NS_ENUM(NSUInteger, buttons) {
 
 - (void)stormOfButtons {
     
-    CGFloat buttonMargin = 82; // This is x and y-padding between buttons: equal to make a perfect grid.
+    CGFloat buttonMargin;
+    CGFloat buttonSize;
+    CGFloat buttonXOffset;
+    CGFloat clearXOffset;
+    CGFloat clearYOffset;
     
-    CircularButton *clear = [[CircularButton alloc] initWithFrame:CGRectMake(216, 150, 50, 50) andTitle:@"C" andTag:ButtonClear onTouch:@selector(calcButtonPressed:)];
-    [self.view addSubview:clear];
+    if ([self isiPhone5]) {
+        buttonMargin = 82;
+        buttonSize = 72;
+        buttonXOffset = 32;
+        clearXOffset = 216;
+        clearYOffset = 150;
+    } else {
+        buttonMargin = 70;
+        buttonSize = 60;
+        buttonXOffset = 20;
+        clearXOffset = 250;
+        clearYOffset = 175;
+    }
+    
+    CircularButton *clear = [[CircularButton alloc] initWithFrame:CGRectMake(clearXOffset, clearYOffset, 50, 50) andTitle:@"C" andTag:ButtonClear onTouch:@selector(calcButtonPressed:)];
     
     UIView *numberPad = [[UIView alloc] initWithFrame:CGRectMake(20, 160, 300, 500)];
     numberPad.center = self.view.center;
     [numberPad setFrame:CGRectOffset(numberPad.frame, 0, 185)];
     [self.view addSubview:numberPad];
+    [self.view addSubview:clear];
     
-    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(32, 0, 70, 70) andTitle:@"9" andTag:ButtonNine onTouch:@selector(calcButtonPressed:)];
+    CircularButton *nine = [[CircularButton alloc] initWithFrame:CGRectMake(buttonXOffset, 0, buttonSize, buttonSize) andTitle:@"9" andTag:ButtonNine onTouch:@selector(calcButtonPressed:)];
     [numberPad addSubview:nine];
     
     CircularButton *eight = [[CircularButton alloc] initWithFrame:CGRectOffset(nine.frame, buttonMargin, 0) andTitle:@"8" andTag:ButtonEight onTouch:@selector(calcButtonPressed:)];
@@ -117,7 +135,7 @@ typedef NS_ENUM(NSUInteger, buttons) {
 
 #pragma mark - Switchboard
 
-- (void)calcButtonPressed:(id)sender {
+- (void)calcButtonPressed:(CircularButton *)sender {
     
     if ([self.result.text isEqualToString:@"0"]) {
         self.result.text = @"";
@@ -239,6 +257,16 @@ typedef NS_ENUM(NSUInteger, buttons) {
         self.view.backgroundColor = backgroundBlue;
         self.window.backgroundColor = calculatorWindowBlue;
     }];
+}
+
+#pragma mark - Helpers
+
+- (BOOL)isiPhone5 {
+    if ([UIScreen mainScreen].bounds.size.height == 568) {
+        return true;
+    }
+    
+    return false;
 }
 
 
