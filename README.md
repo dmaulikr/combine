@@ -1,10 +1,14 @@
-# Combine
+# combine
 
-A super-fresh iPhone calculator app that was built for a [Treehouse](https://teamtreehouse.com/forum/forum-contest-calculator-app-for-ios) forum competition. 
+A super-fresh iPhone calculator app that was built for a [Treehouse](https://teamtreehouse.com/forum/forum-contest-calculator-app-for-ios) forum competition. It was like a mini-hackathon, and was really fun.
 
-[@colbyl](https://github.com/colbyl) thinks he has it in the bag. 
+Check out [@colbyl](https://github.com/colbyl)'s project, [minus](https://github.com/colbyl/minus). A lot of work went into it and I had a great time competing with him.
 
-Oh, and swipe down with two fingers! Had fun with that.
+Oh, and swipe down with two fingers! That's pretty cool.
+
+Screenshot:
+
+![Screenshot](http://i.imgur.com/lN9fKJG.png?1)
 
 ---
 

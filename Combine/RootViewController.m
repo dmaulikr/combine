@@ -258,14 +258,15 @@ typedef NS_ENUM(NSUInteger, buttons) {
 #pragma mark - Into Darkness or to Light
 
 - (void)swipedDown:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ThemeChanged" object:nil];
     [UIView animateWithDuration:0.2 animations:^{
         self.view.backgroundColor = backgroundDark;
         self.window.backgroundColor = calculatorWindowDark;
     }];
-    
 }
 
 - (void)swipedUp:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ThemeChanged" object:nil];
     [UIView animateWithDuration:0.2 animations:^{
         self.view.backgroundColor = backgroundBlue;
         self.window.backgroundColor = calculatorWindowBlue;
