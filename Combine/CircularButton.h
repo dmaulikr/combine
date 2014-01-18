@@ -20,4 +20,6 @@
  */
 - (id)initWithFrame:(CGRect)frame andTitle:(NSString *)title andTag:(NSInteger)tag onTouch:(SEL)selector;
 
++ (CircularButton *)buttonWithFrame:(CGRect)frame andTitle:(NSString *)title andTag:(NSInteger)tag onTouch:(SEL)selector;
+
 @end

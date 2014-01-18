@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont fontWithName:@"AppleSDGothicNeo-Light" size:64.0f];
+        self.font = [UIFont fontWithName:@"Avenir-Heavy" size:64.0f];
         self.adjustsFontSizeToFitWidth = YES;
         self.minimumScaleFactor = 0.2;
         self.numberOfLines = 1;
